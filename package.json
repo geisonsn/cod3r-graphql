@@ -1,6 +1,15 @@
 {
+  "name": "cod3r-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/nodemon/bin/nodemon.js"
+  },
   "dependencies": {
     "apollo-server": "^2.8.1",
     "graphql": "^14.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
