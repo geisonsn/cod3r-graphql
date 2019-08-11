@@ -22,6 +22,11 @@ const typeDefs = gql`
 `;
 
 const resolvers = {
+  Usuario: {
+    salario(usuario) {
+      return usuario.salario_real;
+    }
+  },
   Query: {
     hello() {
       return 'Hello world!';
@@ -35,7 +40,7 @@ const resolvers = {
         nome: 'Sofia Cavalcante Nascimento',
         email: 'sophia@gmail.com',
         idade: 15,
-        salario: 1000.00,
+        salario_real: 1000.00,
         vip: true 
       };
     }
