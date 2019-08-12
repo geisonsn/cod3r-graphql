@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
 
   type Usuario {
-    id: ID
+    id: Int
     nome: String!
     email: String!
     idade: Int
@@ -48,7 +48,7 @@ const typeDefs = gql`
     usuarioLogado: Usuario
     produtoEmDestaque: Produto
     usuarios: [Usuario]
-    usuario(id: ID): Usuario
+    usuario(id: Int): Usuario
   }
 `;
 
@@ -91,7 +91,7 @@ const resolvers = {
       return usuarios;
     },
     usuario(_, args) {
-      return usuarios.find(usuario => usuario.id == args.id);
+      return usuarios.find(usuario => usuario.id === args.id);
     }
   }
 };
