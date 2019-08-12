@@ -90,8 +90,8 @@ const resolvers = {
     usuarios() {
       return usuarios;
     },
-    usuario(_, args) {
-      return usuarios.find(usuario => usuario.id === args.id);
+    usuario(_, { id }) {
+      return usuarios.find(usuario => usuario.id === id);
     }
   }
 };
