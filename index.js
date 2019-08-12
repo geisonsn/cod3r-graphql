@@ -48,6 +48,7 @@ const typeDefs = gql`
     usuarioLogado: Usuario
     produtoEmDestaque: Produto
     usuarios: [Usuario]
+    usuario(id: ID): Usuario
   }
 `;
 
@@ -88,6 +89,9 @@ const resolvers = {
     },
     usuarios() {
       return usuarios;
+    },
+    usuario(_, args) {
+      return usuarios.find(usuario => usuario.id == args.id);
     }
   }
 };
