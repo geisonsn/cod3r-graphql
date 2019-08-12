@@ -1,5 +1,10 @@
 const { ApolloServer, gql } = require('apollo-server');
 
+const perfis = [
+  {id: 1, nome: 'comum'},
+  {id: 2, nome: 'administrador'}
+];
+
 const usuarios = [
   {
     id: 1,
@@ -32,6 +37,11 @@ const typeDefs = gql`
     precoComDesconto: Float
   }
 
+  type Perfil {
+    id: Int
+    nome: String
+  }
+
   type Usuario {
     id: Int
     nome: String!
@@ -49,6 +59,8 @@ const typeDefs = gql`
     produtoEmDestaque: Produto
     usuarios: [Usuario]
     usuario(id: Int): Usuario
+    perfis: [Perfil]
+    perfil(id: Int): Perfil
   }
 `;
 
@@ -92,6 +104,12 @@ const resolvers = {
     },
     usuario(_, { id }) {
       return usuarios.find(usuario => usuario.id === id);
+    },
+    perfis() {
+      return perfis
+    },
+    perfil(_, { id }) {
+      return perfis.find(perfil => perfil.id === id);
     }
   }
 };
