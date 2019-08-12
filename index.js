@@ -10,19 +10,22 @@ const usuarios = [
     id: 1,
     nome: 'Bernardo Cavalcante do Nascimento',
     email: 'bernardocn@gmail.com',
-    idade: 20
+    idade: 20,
+    perfil_id: 1
   },
   {
     id: 2,
     nome: 'Maria de Albuquerque',
     email: 'malbuquerque@gmail.com',
-    idade: 30
+    idade: 30,
+    perfil_id: 2
   },
   {
     id: 3,
     nome: 'José Maria da Silva',
     email: 'jmsilva@gmail.com',
-    idade: 39
+    idade: 39,
+    perfil_id: 1
   }
 ];
 
@@ -49,6 +52,7 @@ const typeDefs = gql`
     idade: Int
     salario: Float
     vip: Boolean
+    perfil: Perfil
   }
 
   # Pontos de entrada da API
@@ -73,6 +77,9 @@ const resolvers = {
   Usuario: {
     salario(usuario) {
       return usuario.salario_real;
+    },
+    perfil(usuario) {
+      return perfis.find(perfil => perfil.id === usuario.perfil_id)
     }
   },
   Query: {
